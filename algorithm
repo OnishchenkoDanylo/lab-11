@@ -1,0 +1,24 @@
+#include <iostream>
+#include <cstdlib>
+using namespace std;
+int main(void)
+{int n; srand(time(0)); 
+ cout<<"enter the length of array: "; 
+ cin>>n; int a[n], ove, *ptr, *rtp, temp;
+ for(int i=0; i<n; i++)
+ {a[i]=-100+rand()%200;
+  cout<<a[i]<<"\t";
+  if(a[i]<0) ove=i;}//генерація елементів масиву
+ cout<<endl;
+ ptr=&a[ove]; rtp=&a[0]; temp=*rtp;
+ a[0]=*ptr; a[ove]=temp;//перестановка першого і останнього від’ємного елемента
+ cout<<a[ove]<<"\t"<<a[0]<<endl;
+ for(int i=0; i<n; i++)
+ cout<<a[i]<<"\t";
+ int s=0, k=0, *sm, *kl;
+ for(int i=0; i<n; i++)
+ if(a[i]>0)
+ {k++; s=s+a[i];}
+ sm=&s; kl=&k;//знаходження кількості і суми додитних елементів масиву
+ cout<<"number of numbers >0  "<<*kl<<endl<<"their summ  "<<*sm<<endl;
+ return 0;}
